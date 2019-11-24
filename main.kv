@@ -1,0 +1,625 @@
+#:import sm kivy.uix.screenmanager
+
+<Controller>:
+    #home_screen_labels
+    home_project_amount_label: home_project_amount_label
+    home_project_date_label: home_project_date_label
+    home_material_amount_label: home_material_amount_label
+    home_material_date_label: home_material_date_label
+    home_labor_amount_label: home_labor_amount_label 
+    home_labor_date_label: home_labor_date_label
+    home_expense_amount_label: home_expense_amount_label 
+    home_expense_date_label: home_expense_date_label
+
+    #material_screen
+    materialname: materialname
+    quantity: quantity
+    unitprice: unitprice
+    materialdate: materialdate
+    
+    #labor_screen
+    category: category
+    labornumber: labornumber
+    wage: wage
+    date: labordate
+
+    #expenses_screen
+    expensetype: expensetype
+    expensedate: expensedate
+    expenseamount: expenseamount
+
+    #misc_screen
+    misctype: misctype
+    miscamount: miscamount
+    miscdate: miscdate
+
+    #new_project_screen
+    projectname: projectname
+    projecttype: projecttype
+    startdate: startdate
+    completiondate: completiondate
+    estimatedcost: estimatedcost
+
+    #contact_screen
+    contactname: contactname 
+    contact: contact
+
+    NavigationLayout:
+        id: navdrawer     
+
+        MDNavigationDrawer:
+            drawer_logo: 'house.jpg'
+
+
+            NavigationDrawerIconButton:
+                text: 'Home'
+                icon: 'home-circle'
+                on_release:
+                    screen_manager.current = 'home'
+
+            NavigationDrawerIconButton:
+                text: 'New Project'
+                icon: 'wall'
+                on_release:
+                    screen_manager.current = 'newproject'
+
+            NavigationDrawerDivider:
+
+            NavigationDrawerIconButton:
+                text: 'Materials'
+                icon: 'spade'
+                on_release:
+                    screen_manager.current = 'materials'
+
+            NavigationDrawerIconButton:
+                text: 'Labor'
+                icon: 'worker'
+                on_release:
+                    screen_manager.current = 'labor'
+
+            NavigationDrawerIconButton:
+                text: 'Onsite Expenses'
+                icon: 'coin'
+                on_release:
+                    screen_manager.current = 'expenses'
+
+            NavigationDrawerIconButton:
+                text: 'Misc. Expenses'
+                icon: 'cash-usd'
+                on_release:
+                    screen_manager.current = 'misc'
+            
+            NavigationDrawerDivider:
+
+            NavigationDrawerIconButton:
+                text: 'Contacts'
+                icon: 'contacts'
+                on_release:
+                    screen_manager.current = 'contacts'
+
+            NavigationDrawerDivider:
+
+            NavigationDrawerIconButton:
+                text: 'Settings'
+                icon: 'settings'
+                on_release:
+                    screen_manager.current = 'settings'
+
+            
+        FloatLayout:
+            ScreenManager:
+                id: screen_manager
+                Screen:
+                    name: 'home'
+                    canvas.before:
+                        Color:
+                            rgba: .5, .5, .5, .35
+
+                        RoundedRectangle:
+                            size: root.width, root.height/1.5
+                            pos: self.pos 
+                            radius: [18, 18, 0, 0]
+
+                    FloatLayout:
+                        MDLabel:
+                            id: home_project_amount_label
+                            markup: True 
+                            bold: True
+                            text: 'N/A'
+                            font_size: '48sp'
+                            pos_hint: {'center_x': .5, 'center_y': .925}
+                            size_hint: None, None
+                            text_size: cm(8), cm(5)
+                            halign: 'center'
+
+
+                        MDLabel: 
+                            id: home_project_date_label                                                    
+                            text: 'Total Ependiture As at\n -Today-'
+                            font_size: '13sp'
+                            pos_hint: {'center_x': .5, 'center_y': .84}
+                            size_hint: None, None
+                            text_size: cm(8), cm(4)
+                            halign: 'center'
+
+                        MDLabel:    
+                            id: home_material_amount_label
+                            markup: True 
+                            bold: True                        
+                            text: 'N/A'
+                            font_size: '18sp'
+                            pos_hint: {'center_x': .14, 'center_y': .71}
+                            size_hint: None, None
+                            text_size: cm(8), cm(4)
+                            halign: 'center'
+
+                        
+                        MDLabel:  
+                            id: home_material_date_label                                                   
+                            text: 'MATERIALS'
+                            font_size: '9sp'
+                            pos_hint: {'center_x': .14, 'center_y': .68}
+                            size_hint: None, None
+                            text_size: cm(8), cm(4)
+                            halign: 'center'
+
+                        MDLabel:   
+                            id: home_labor_amount_label 
+                            markup: True 
+                            bold: True                        
+                            text: 'N/A'
+                            font_size: '18sp'
+                            pos_hint: {'center_x': .525, 'center_y': .71}
+                            size_hint: None, None
+                            text_size: cm(8), cm(4)
+                            halign: 'center'
+
+                        MDLabel:  
+                            id: home_labor_date_label                                                   
+                            text: 'LABOUR'
+                            font_size: '9sp'
+                            pos_hint: {'center_x': .525, 'center_y': .68}
+                            size_hint: None, None
+                            text_size: cm(8), cm(4)
+                            halign: 'center'
+
+                        MDLabel:    
+                            id: home_expense_amount_label
+                            markup: True 
+                            bold: True                        
+                            text: 'N/A'
+                            font_size: '18sp'
+                            pos_hint: {'center_x': .89, 'center_y': .71}
+                            size_hint: None, None
+                            text_size: cm(8), cm(4)
+                            halign: 'center'
+
+                        MDLabel: 
+                            id: home_expense_date_label                                                    
+                            text: 'EXPENSES'
+                            font_size: '9sp'
+                            pos_hint: {'center_x': .89, 'center_y': .68}
+                            size_hint: None, None
+                            text_size: cm(8), cm(4)
+                            halign: 'center'
+
+                        MDFloatingActionButton:
+                            icon: 'plus'
+                            pos_hint: {'center_x': .89, 'center_y': .1}
+                            on_release:
+                                screen_manager.current = 'newproject'   
+                                                                                        
+
+                Screen:
+                    name: 'materials'                     
+                    MDCard:
+                        size: .95, .8
+                        size_hint: .95, .91
+                        pos: .5, .6
+                        pos_hint: {'center_x': .5, 'center_y': .4} 
+
+                        ScrollView:
+                            do_scroll_y: True
+                            FloatLayout:
+                                MDLabel:
+                                    markup: True
+                                    text: '[b]NEW RECORD[/b]'  
+                                    pos_hint: {'center_x': .499, 'center_y': .933}
+                                    size_hint: .79, .09
+                                    theme_text_color: 'Secondary'
+                                                
+                                MDTextField:
+                                    id: materialname
+                                    hint_text: 'Item Name'
+                                    pos_hint: {'center_x': .499, 'center_y': .825}
+                                    size_hint: .79, .1
+
+                                MDTextField:
+                                    id: quantity
+                                    hint_text: 'Quantity'
+                                    size_hint: .79, .1
+                                    pos_hint: {'center_x': .499, 'center_y': .699}
+
+                                MDTextField:
+                                    id: unitprice
+                                    hint_text: 'Unit Price (Ksh.)'
+                                    size_hint: .79, .1
+                                    pos_hint: {'center_x': .499, 'center_y': .569}
+
+                                MDTextField:
+                                    id: materialdate
+                                    hint_text: 'Date'                                                                       
+                                    size_hint: .4, .1
+                                    pos_hint: {'center_x': .3, 'center_y': .44}
+
+                                MDIconButton:
+                                    icon: 'calendar'
+                                    pos_hint: {'center_x': .515, 'center_y': .44}
+                                    on_release:
+                                        root.date_picker(root.get_material_date)
+                                    
+
+                                MDRaisedButton:
+                                    markup: True
+                                    text: '[b]SAVE[/b]'
+                                    pos_hint: {'center_x': .499, 'center_y': .28}
+                                    size_hint: .79, .09
+                                    on_release:
+                                        root.submit_materials()
+                                        root.clear_material_screen()
+                                        root.update_material_label()
+                                        root.update_total_project_cost_label()
+                                        
+                                        
+
+                                MDRectangleFlatButton:
+                                    text: 'CANCEL'
+                                    pos_hint: {'center_x': .499, 'center_y': .175}
+                                    size_hint: .79, .09
+                                    on_press:
+                                        root.clear_material_screen()
+                                        screen_manager.current = 'home'
+                                        
+
+                
+                Screen:
+                    name: 'labor'
+                    MDCard:
+                        size: .95, .8
+                        size_hint: .95, .91
+                        pos: .5, .6
+                        pos_hint: {'center_x': .5, 'center_y': .4}
+
+                        FloatLayout: 
+                            MDLabel:
+                                markup: True
+                                text: '[b]NEW RECORD[/b]'  
+                                pos_hint: {'center_x': .499, 'center_y': .933}
+                                size_hint: .79, .09
+                                theme_text_color: 'Secondary' 
+
+                            MDTextField:
+                                id: category
+                                hint_text: 'Category (e.g Casual, Mason)'
+                                pos_hint: {'center_x': .499, 'center_y': .8}
+                                size_hint: .79, .1
+
+                            MDTextField:
+                                id: labornumber
+                                hint_text: 'Number'
+                                helper_text: 'How many ' + root.ids.category.text + '?'
+                                helper_text_mode: 'on_focus'
+                                size_hint: .79, .1
+                                pos_hint: {'center_x': .499, 'center_y': .68}
+
+                            MDTextField:
+                                id: wage
+                                hint_text: 'Wage (Ksh.)'
+                                size_hint: .79, .1
+                                pos_hint: {'center_x': .499, 'center_y': .55}
+
+                            MDTextField:
+                                id: labordate
+                                hint_text: 'Date'
+                                size_hint: .4, .1
+                                pos_hint: {'center_x': .3, 'center_y': .44}  
+
+                            MDIconButton:
+                                icon: 'calendar'
+                                pos_hint: {'center_x': .515, 'center_y': .44}
+                                on_release:
+                                    root.date_picker(root.get_labor_date)
+
+                            MDRaisedButton:
+                                markup: True
+                                text: '[b]SAVE[/b]'
+                                pos_hint: {'center_x': .499, 'center_y': .28}
+                                size_hint: .79, .09
+                                on_release:
+                                    root.submit_labor()  
+                                    root.clear_labor_screen()
+                                    root.update_labor_label() 
+                                    root.update_total_project_cost_label()                             
+
+                            MDRectangleFlatButton:
+                                text: 'CANCEL'
+                                pos_hint: {'center_x': .499, 'center_y': .175}
+                                size_hint: .79, .09
+                                on_press:
+                                    root.clear_labor_screen()
+                                    screen_manager.current = 'home'
+                                
+                    
+
+                Screen:
+                    name: 'expenses'
+                    MDCard:
+                        size: .95, .8
+                        size_hint: .95, .91
+                        pos: .5, .6
+                        pos_hint: {'center_x': .5, 'center_y': .4}
+
+                        ScrollView:
+                            do_scroll_y: True
+
+                            FloatLayout:   
+                                MDLabel:
+                                    markup: True
+                                    text: '[b]NEW RECORD[/b]'  
+                                    pos_hint: {'center_x': .499, 'center_y': .933}
+                                    size_hint: .79, .1
+                                    theme_text_color: 'Secondary'
+                                MDTextField:
+                                    id: expensetype
+                                    hint_text: 'Type (e.g Transport)'
+                                    pos_hint: {'center_x': .499, 'center_y': .8}
+                                    size_hint: .79, .1
+
+                                MDTextField:
+                                    id: expenseamount
+                                    hint_text: 'Amount Spent'
+                                    size_hint: .79, .1
+                                    pos_hint: {'center_x': .499, 'center_y': .67}
+
+                                MDTextField:
+                                    id: expensedate
+                                    hint_text: 'Date'
+                                    size_hint: .4, .1
+                                    pos_hint: {'center_x': .3, 'center_y': .55}
+
+                                MDIconButton:
+                                    icon: 'calendar'
+                                    pos_hint: {'center_x': .5, 'center_y': .55}
+                                    on_release:
+                                        root.date_picker(root.get_expenses_date)
+
+
+                                MDRaisedButton:
+                                    markup: True
+                                    text: '[b]SAVE[/b]'
+                                    pos_hint: {'center_x': .499, 'center_y': .38}
+                                    size_hint: .79, .09
+                                    on_release:
+                                        root.submit_expenses()
+                                        root.clear_expenses_screen()
+                                        root.update_expenses_label()
+                                        root.update_total_project_cost_label()
+                                    
+
+                                MDRectangleFlatButton:
+                                    text: 'CANCEL'
+                                    pos_hint: {'center_x': .499, 'center_y': .275}
+                                    size_hint: .79, .09
+                                    on_press:
+                                        root.clear_expenses_screen()  
+                                        screen_manager.current = 'home'                         
+                    
+
+                Screen:
+                    name: 'misc'     
+                    MDCard:
+                        size: .95, .8
+                        size_hint: .95, .91
+                        pos: .5, .6
+                        pos_hint: {'center_x': .5, 'center_y': .4}
+                        
+                        ScrollView: 
+                            do_scroll_y: True              
+                            FloatLayout: 
+                                MDLabel:
+                                    markup: True
+                                    text: '[b]NEW RECORD[/b]'  
+                                    pos_hint: {'center_x': .499, 'center_y': .933}
+                                    size_hint: .79, .1
+                                    theme_text_color: 'Secondary' 
+
+                                MDTextField:
+                                    id: misctype
+                                    hint_text: 'Type (e.g M Pesa Withdrawal)'
+                                    pos_hint: {'center_x': .499, 'center_y': .8}
+                                    size_hint: .79, .1
+                                    
+
+                                MDTextField:
+                                    id: miscamount
+                                    hint_text: 'Amount'
+                                    size_hint: .79, .1
+                                    pos_hint: {'center_x': .499, 'center_y': .67}
+                                    
+
+                                MDTextField:
+                                    id: miscdate
+                                    hint_text: 'Date'
+                                    size_hint: .4, .1
+                                    pos_hint: {'center_x': .3, 'center_y': .55}
+                                    
+
+                                MDIconButton:
+                                    icon: 'calendar'
+                                    pos_hint: {'center_x': .5, 'center_y': .55}
+                                    on_release:
+                                        root.date_picker(root.get_misc_date)
+
+                                
+
+                                MDRaisedButton:
+                                    markup: True
+                                    text: '[b]SAVE[/b]'
+                                    pos_hint: {'center_x': .499, 'center_y': .4}
+                                    size_hint: .79, .09
+                                    on_release:
+                                        root.submit_misc()    
+                                        root.clear_misc_screen()  
+                                        root.update_total_project_cost_label()
+                                                                      
+
+                                MDRectangleFlatButton:
+                                    text: 'CANCEL'
+                                    pos_hint: {'center_x': .499, 'center_y': .29}
+                                    size_hint: .79, .09
+                                    on_press:
+                                        root.clear_misc_screen()
+                                        screen_manager.current = 'home'
+
+                Screen:
+                    name: 'newproject'
+                    MDCard:
+                        size: .95, .8
+                        size_hint: .95, .85
+                        pos: .5, .6
+                        pos_hint: {'center_x': .5, 'center_y': .45}
+                        FloatLayout:  
+                            MDLabel:
+                                markup: True
+                                text: '[b]CREATE A NEW PROJECT[/b]'  
+                                pos_hint: {'center_x': .499, 'center_y': .933}
+                                size_hint: .79, .09
+                                theme_text_color: 'Secondary'                                       
+                            MDTextField:
+                                id: projectname
+                                hint_text: 'Project Name'
+                                pos_hint: {'center_x': .499, 'center_y': .84}
+                                size_hint: .79, .11
+
+                            MDTextField:
+                                id: projecttype
+                                hint_text: 'Project Type'
+                                helper_text: '(e.g Renovations)'
+                                helper_text_mode: 'on_focus'
+                                size_hint: .79, .11
+                                pos_hint: {'center_x': .499, 'center_y': .715}
+
+                            MDTextField:
+                                id: startdate
+                                hint_text: 'Start Date'
+                                helper_text: '(yy/mm/dd)'
+                                helper_text_mode: 'on_focus'
+                                size_hint: .4, .1
+                                pos_hint: {'center_x': .3, 'center_y': .58}
+
+                            MDIconButton:
+                                icon: 'calendar'
+                                pos_hint: {'center_x': .499, 'center_y': .58}
+                                on_release:
+                                    root.date_picker(root.get_new_project_start_date)
+
+                            MDTextField:
+                                id: completiondate
+                                hint_text: 'Estimated Date of Completion'
+                                helper_text: '(yy/mm/dd)'
+                                helper_text_mode: 'on_focus'
+                                size_hint: .4, .1
+                                pos_hint: {'center_x': .3, 'center_y': .448}
+
+                            MDIconButton:
+                                icon: 'calendar'
+                                pos_hint: {'center_x': .499, 'center_y': .448}
+                                on_release:
+                                    root.date_picker(root.get_new_project_completion_date)
+
+                            MDTextField:
+                                id: estimatedcost
+                                hint_text: 'Estimated Cost (Ksh.)'
+                                size_hint: .79, .11
+                                pos_hint: {'center_x': .499, 'center_y': .32}
+
+
+                            MDRaisedButton:
+                                markup: True
+                                text: '[b]CREATE[/b]'
+                                pos_hint: {'center_x': .499, 'center_y': .199}
+                                size_hint: .79, .09
+                                on_release:
+                                    root.create_new_project()
+
+                            MDRectangleFlatButton:
+                                text: 'CANCEL'
+                                pos_hint: {'center_x': .499, 'center_y': .09}
+                                size_hint: .79, .09
+                                on_press:
+                                    root.clear_new_project_screen()
+                                    screen_manager.current = 'home'
+
+                Screen:
+                    name: 'contacts'
+
+                    MDCard:
+                        size: .95, .8
+                        size_hint: .95, .85
+                        pos: .5, .6
+                        pos_hint: {'center_x': .5, 'center_y': .45}
+
+                        FloatLayout: 
+                             
+                            MDLabel:
+                                markup: True
+                                text: '[b]NEW CONTACT[/b]'  
+                                pos_hint: {'center_x': .499, 'center_y': .928}
+                                size_hint: .79, .09
+                                theme_text_color: 'Secondary'           
+                            MDTextField:
+                                id: contactname
+                                hint_text: 'Name*'
+                                pos_hint: {'center_x': .499, 'center_y': .8}
+                                size_hint: .79, .12
+
+                            MDTextField:
+                                id: contact
+                                hint_text: 'Phone Number*'
+                                helper_text: '(e.g 07xx xxxxxx)'
+                                helper_text_mode: 'on_focus'
+                                size_hint: .79, .12
+                                pos_hint: {'center_x': .499, 'center_y': .67}
+                                input_type: 'number'
+
+                            MDRaisedButton:
+                                markup: True
+                                text: '[b]SAVE CONTACT[/b]'
+                                pos_hint: {'center_x': .499, 'center_y': .5}
+                                size_hint: .79, .09
+                                on_release:
+                                    root.submit_contact()
+                                    
+
+                            MDRectangleFlatButton:
+                                text: 'CANCEL'
+                                pos_hint: {'center_x': .499, 'center_y': .39}
+                                size_hint: .79, .09
+                                on_press:
+                                    root.clear_contact_screen()
+                                    screen_manager.current = 'home'
+                                
+                Screen:
+                    name: 'settings'
+
+
+            MDToolbar:
+                title: 'MENU' 
+                md_bg_color: app.theme_cls.primary_color 
+                left_action_items: [['menu', lambda x: root.ids.navdrawer.toggle_nav_drawer()]]  
+                right_action_items: [['dots-vertical', lambda x: None]]
+                
+
+                pos_hint: {'center_y': .95999} 
+                pos: .1, .9599     
+          
